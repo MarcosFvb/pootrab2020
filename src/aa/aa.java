@@ -5,6 +5,8 @@
  */
 package pootrabalho;
 
+import JLabelPOO.PaginaLoja;
+
 /**
  *
  * @author lipet
@@ -16,7 +18,7 @@ public class PooTrabalho {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Sla");
+        new PaginaLoja().setVisible(true);
     }
     
 }
