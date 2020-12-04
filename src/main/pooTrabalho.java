@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pootrabalho;
+package main;
 
 import JLabelPOO.PaginaLoja;
 
@@ -11,8 +11,7 @@ import JLabelPOO.PaginaLoja;
  *
  * @author lipet
  */
-public class PooTrabalho {
-
+public class pooTrabalho {
     /**
      * @param args the command line arguments
      */
