@@ -407,8 +407,18 @@ public class PaginaLoja extends javax.swing.JFrame {
         jRadioButton4.setText("Sim");
 
         jButton7.setText("Finalizar compra");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         jButton8.setText("Selecionar");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout comprarLayout = new javax.swing.GroupLayout(comprar);
         comprar.setLayout(comprarLayout);
@@ -689,6 +699,24 @@ public class PaginaLoja extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        if(selectIdiom != true)
+        {
+            JOptionPane.showMessageDialog(rootPane, "Por favor, selecione uma matéria");
+        }else
+        {
+            numItens++;
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:    
+        selectIdiom = true;
+        materia = (String)comboBoxMateria.getSelectedItem();
+        textFieldMateria.setText(materia);
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
