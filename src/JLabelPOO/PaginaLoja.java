@@ -7,6 +7,7 @@ package JLabelPOO;
 
 import java.awt.CardLayout;
 import java.awt.Color;
+import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -705,8 +706,15 @@ public class PaginaLoja extends javax.swing.JFrame {
         if(selectIdiom != true)
         {
             JOptionPane.showMessageDialog(rootPane, "Por favor, selecione uma matéria");
+        }else if(bgMateriais.isSelected(jRadioButton1.getModel()) == false && bgMateriais.isSelected(jRadioButton2.getModel()) == false)
+        {
+            JOptionPane.showMessageDialog(rootPane, "Por favor, selecione uma opção sobre o materal");
+        }else if(bgBrinde.isSelected(jRadioButton3.getModel()) == false && bgBrinde.isSelected(jRadioButton4.getModel()) == false)
+        {
+            JOptionPane.showMessageDialog(rootPane, "Por favor, selecione uma opção sobre o brinde");
         }else
         {
+            JOptionPane.showMessageDialog(rootPane, "Item adicionado ao carrinho!");
             numItens++;
         }
     }//GEN-LAST:event_jButton7ActionPerformed
