@@ -19,16 +19,6 @@ public class checkout extends java.awt.Dialog {
     static int numAlunos = 0;
     public static String nome, email;
     
-    public static String getNome()
-    {
-        return nome;
-    }
-    
-    public static String getEmail()
-    {
-        return email;
-    }
-    
     public checkout(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -54,7 +44,7 @@ public class checkout extends java.awt.Dialog {
         numeroTF = new javax.swing.JTextField();
         dataTF = new javax.swing.JTextField();
         codigoTF = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        bTFinalizarCompra = new javax.swing.JToggleButton();
         emailJL2 = new javax.swing.JLabel();
         nomeJL1 = new javax.swing.JLabel();
 
@@ -117,10 +107,10 @@ public class checkout extends java.awt.Dialog {
         codigoTF.setBackground(new java.awt.Color(71, 120, 197));
         codigoTF.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jToggleButton1.setText("Finalizar Compra");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        bTFinalizarCompra.setText("Finalizar Compra");
+        bTFinalizarCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                bTFinalizarCompraActionPerformed(evt);
             }
         });
 
@@ -166,7 +156,7 @@ public class checkout extends java.awt.Dialog {
                         .addComponent(codigo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jToggleButton1)
+                            .addComponent(bTFinalizarCompra)
                             .addComponent(codigoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(senha))
                 .addGap(62, 62, 62))
@@ -203,7 +193,7 @@ public class checkout extends java.awt.Dialog {
                     .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(codigoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(jToggleButton1)
+                .addComponent(bTFinalizarCompra)
                 .addGap(32, 32, 32))
         );
 
@@ -235,7 +225,7 @@ public class checkout extends java.awt.Dialog {
         }
     }//GEN-LAST:event_dataTFFocusLost
   
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void bTFinalizarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTFinalizarCompraActionPerformed
         // TODO add your handling code here:
         if(nomeTF.getText().equals("") || senhaTF.getText().equals("") || senha2TF.getText().equals("") || emailTF.getText().equals("") || numeroTF.getText().equals("")
            || dataTF.getText().equals("MM/AA") || codigoTF.getText().equals(""))
@@ -246,9 +236,10 @@ public class checkout extends java.awt.Dialog {
             nome = this.nomeTF.getText();
             email = this.emailTF.getText();
             numAlunos = 1 + numAlunos;
+            PaginaLoja.alunosCheck = true;
             this.dispose();
         }
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_bTFinalizarCompraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,13 +264,13 @@ public class checkout extends java.awt.Dialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton bTFinalizarCompra;
     private javax.swing.JLabel codigo;
     private javax.swing.JTextField codigoTF;
     private javax.swing.JLabel data;
     private javax.swing.JTextField dataTF;
     private javax.swing.JLabel emailJL2;
     private javax.swing.JTextField emailTF;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel nomeJL1;
     private javax.swing.JTextField nomeTF;
     private javax.swing.JLabel numero;

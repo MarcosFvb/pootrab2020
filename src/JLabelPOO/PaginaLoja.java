@@ -30,6 +30,7 @@ public class PaginaLoja extends javax.swing.JFrame {
     public int numAlunos = 0;
     CardLayout cardLayout;
     public boolean selectIdiom;
+    public static boolean alunosCheck = false; 
     public String materia, nomeAluno, emailAluno;
     public int numItens, row;
     ArrayList<String> apenasMaterias;
@@ -120,12 +121,25 @@ public class PaginaLoja extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableCadastro = new javax.swing.JTable();
         jLabel23 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        CBcurso = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         sobre = new javax.swing.JPanel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel30 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(23, 35, 51));
         jPanel1.setForeground(new java.awt.Color(23, 35, 51));
@@ -155,7 +169,7 @@ public class PaginaLoja extends javax.swing.JFrame {
             button_homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(button_homeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -372,48 +386,50 @@ public class PaginaLoja extends javax.swing.JFrame {
         home.setBackground(new java.awt.Color(71, 120, 197));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel1.setText("Bem vindo a blabla bla, a maior rede de linguas do bla bla ");
+        jLabel1.setText("O nosso curso promete aulas dinâmicas para todas as idades com uma didática diferenciada:");
 
         jLabel2.setFont(new java.awt.Font("Impact", 0, 50)); // NOI18N
         jLabel2.setText("MEGA IDIOMAS");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel5.setText("Aqui você encontra a maior variedade de bla bla ");
+        jLabel5.setText("a de tomada de decisão, que auxilia no mercado de trabalho, além do preço super acessível.");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel6.setText("Confira nossos cursos bla bla");
+        jLabel6.setText("Confira nossos cursos na aba sobre cursos!");
 
         javax.swing.GroupLayout homeLayout = new javax.swing.GroupLayout(home);
         home.setLayout(homeLayout);
         homeLayout.setHorizontalGroup(
             homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homeLayout.createSequentialGroup()
+                .addGroup(homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addGroup(homeLayout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addComponent(jLabel5)))
+                .addContainerGap(162, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homeLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(homeLayout.createSequentialGroup()
-                        .addGap(333, 333, 333)
-                        .addComponent(jLabel6))
-                    .addGroup(homeLayout.createSequentialGroup()
-                        .addGap(247, 247, 247)
-                        .addGroup(homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel5)
-                            .addGroup(homeLayout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)))))
-                .addContainerGap(260, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homeLayout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(286, 286, 286))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homeLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(310, 310, 310))))
         );
         homeLayout.setVerticalGroup(
             homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homeLayout.createSequentialGroup()
-                .addGap(71, 71, 71)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addGap(27, 27, 27)
+                .addGap(39, 39, 39)
                 .addComponent(jLabel6)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         layout.add(home, "home");
@@ -520,7 +536,7 @@ public class PaginaLoja extends javax.swing.JFrame {
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, comprarLayout.createSequentialGroup()
-                .addContainerGap(155, Short.MAX_VALUE)
+                .addContainerGap(156, Short.MAX_VALUE)
                 .addGroup(comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, comprarLayout.createSequentialGroup()
                         .addComponent(jLabel7)
@@ -596,7 +612,7 @@ public class PaginaLoja extends javax.swing.JFrame {
                     .addComponent(materialPrecoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(materiaisAgora)
                     .addComponent(materiaisDepois))
@@ -708,7 +724,7 @@ public class PaginaLoja extends javax.swing.JFrame {
                         .addComponent(TFpreco, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6)))
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
         carrinhoLayout.setVerticalGroup(
             carrinhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -753,7 +769,7 @@ public class PaginaLoja extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel23.setText("Alunos cadastrados no curso de ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inglês", "Francês", "Japonês", "Espanhol", "Alemão" }));
+        CBcurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inglês", "Francês", "Japonês", "Espanhol", "Alemão" }));
 
         jButton1.setText("pesquisar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -767,13 +783,13 @@ public class PaginaLoja extends javax.swing.JFrame {
         alunosLayout.setHorizontalGroup(
             alunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, alunosLayout.createSequentialGroup()
-                .addContainerGap(175, Short.MAX_VALUE)
+                .addContainerGap(176, Short.MAX_VALUE)
                 .addGroup(alunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, alunosLayout.createSequentialGroup()
                         .addComponent(jLabel23)
                         .addGap(46, 46, 46)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(CBcurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(58, 58, 58)
                         .addComponent(jButton1)))
                 .addGap(188, 188, 188))
@@ -784,7 +800,7 @@ public class PaginaLoja extends javax.swing.JFrame {
                 .addContainerGap(170, Short.MAX_VALUE)
                 .addGroup(alunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel23)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CBcurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addGap(63, 63, 63)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -795,15 +811,61 @@ public class PaginaLoja extends javax.swing.JFrame {
 
         sobre.setBackground(new java.awt.Color(71, 120, 197));
 
+        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel25.setText("Nosso curso oferece aulas dinâmicas para todas as idades, contendo o plano infantil Este curso de inglês que é voltado");
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel26.setText("para ser lecionado em forma de histórias e músicas, uma forma mais lúdica, recomendado para crianças a partir de 3 anos");
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel27.setText("O nosso plano adolescente é focado na conversação para oferecer um maior contato com o cotidiano e levemente com ");
+
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel28.setText("o mercado de trabalho");
+
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel29.setText("O plano adulto é focado no mercado de trabalho por isso é recomendado para maiores de 18 já que o professor(a) vai ambientar");
+
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel30.setText("e estimular o uso de idioma com temas sobre viagens, notícias sobre o mundo e mercado profissional.");
+
         javax.swing.GroupLayout sobreLayout = new javax.swing.GroupLayout(sobre);
         sobre.setLayout(sobreLayout);
         sobreLayout.setHorizontalGroup(
             sobreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(sobreLayout.createSequentialGroup()
+                .addGroup(sobreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(sobreLayout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(jLabel30))
+                    .addGroup(sobreLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jLabel29))
+                    .addGroup(sobreLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(sobreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27)
+                            .addComponent(jLabel28))))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         sobreLayout.setVerticalGroup(
             sobreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(sobreLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel26)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel28)
+                .addGap(61, 61, 61)
+                .addComponent(jLabel29)
+                .addGap(47, 47, 47)
+                .addComponent(jLabel30)
+                .addGap(99, 99, 99))
         );
 
         layout.add(sobre, "sobre");
@@ -954,12 +1016,12 @@ public class PaginaLoja extends javax.swing.JFrame {
                 cursosCadastrados.get(i).getPreco()};
                 tabelaCarrinho.addRow(objs);
             }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(rootPane, "Selecione uma materia, por favor");
-            }
             numItens++;
             JOptionPane.showMessageDialog(rootPane, "Curso adicionado ao carrinho");
             clearField();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Selecione uma materia, por favor");
+            }
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -1003,6 +1065,7 @@ public class PaginaLoja extends javax.swing.JFrame {
             resetColor(button_comprar);
             resetColor(button_carrinho);
             resetColor(button_home);
+            
         }
     }//GEN-LAST:event_button_alunosMousePressed
     
@@ -1019,18 +1082,10 @@ public class PaginaLoja extends javax.swing.JFrame {
         {
             apenasMaterias.add(cursosCadastrados.get(i).getIdioma());
         }
-        alunosCadastrados.add(new aluno(nomeAluno, emailAluno, apenasMaterias));
-            tabelaCadastro.setRowCount(0);
-            for(int i = 0; i < alunosCadastrados.size(); i++)
-            {
-                Object[] objs = {alunosCadastrados.get(i).getNome(), alunosCadastrados.get(i).getEmail()};
-                tabelaCarrinho.addRow(objs);
-            }
-            JOptionPane.showMessageDialog(rootPane, apenasMaterias);
         cursosCadastrados.clear();
         tabelaCarrinho.setRowCount(0);
     }//GEN-LAST:event_jButton6ActionPerformed
-
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         cardLayout.show(layout, "comprar");
@@ -1071,8 +1126,31 @@ public class PaginaLoja extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+        String selectedCurso;
+        selectedCurso = (String)CBcurso.getSelectedItem();
+               
+        tabelaCadastro.setRowCount(0);
+        for(int i = 0; i < alunosCadastrados.size(); i++)
+            {
+                if(alunosCadastrados.get(i).getMateriasAluno().contains(selectedCurso))
+                {
+                    Object[] objs = {alunosCadastrados.get(i).getNome(), alunosCadastrados.get(i).getEmail()};
+                    tabelaCadastro.addRow(objs);
+                }
+                
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        // TODO add your handling code here:
+        if(alunosCheck)
+            {
+                alunosCadastrados.add(new aluno(checkout.nome, checkout.email, apenasMaterias));
+                alunosCheck = false;
+        }else{
+                
+        }
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments
@@ -1120,6 +1198,7 @@ public class PaginaLoja extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CBcurso;
     private javax.swing.JTextField TFpreco;
     private javax.swing.JPanel alunos;
     private javax.swing.ButtonGroup bgBrinde;
@@ -1142,7 +1221,6 @@ public class PaginaLoja extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1160,7 +1238,13 @@ public class PaginaLoja extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
