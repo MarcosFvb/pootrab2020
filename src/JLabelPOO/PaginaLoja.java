@@ -11,6 +11,9 @@ import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import JLabelPOO.checkout1;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import main.curso;
 
 /**
  *
@@ -26,10 +29,16 @@ public class PaginaLoja extends javax.swing.JFrame {
     CardLayout cardLayout;
     public boolean selectIdiom;
     public String materia;
-    public int numItens;
+    public int numItens, row;
+    ArrayList <curso> cursosCadastrados;
+    DefaultTableModel tabelaCarrinho;
+    String header[] = new String[]{"Idioma", "Material", "Brinde", "Preço"};
     public PaginaLoja() {
         initComponents();
         cardLayout = (CardLayout)(layout.getLayout());
+        cursosCadastrados = new ArrayList<>();
+        tabelaCarrinho = new DefaultTableModel(header, 0);
+        tableCarrinho.setModel(tabelaCarrinho);
     }
 
     /**
@@ -74,25 +83,25 @@ public class PaginaLoja extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        textFieldMateria = new javax.swing.JTextField();
-        textFieldPreco = new javax.swing.JTextField();
+        materiaTF = new javax.swing.JTextField();
+        precoTF = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        materiaisAgora = new javax.swing.JRadioButton();
+        materiaisDepois = new javax.swing.JRadioButton();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        brindeNao = new javax.swing.JRadioButton();
+        brindeSim = new javax.swing.JRadioButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         carrinho = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableCarrinho = new javax.swing.JTable();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TFpreco = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
         sobre = new javax.swing.JPanel();
         alunos = new javax.swing.JPanel();
@@ -409,39 +418,40 @@ public class PaginaLoja extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel17.setText("reais");
 
-        textFieldMateria.setEditable(false);
-        textFieldMateria.setBackground(new java.awt.Color(71, 120, 197));
-        textFieldMateria.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        textFieldMateria.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        textFieldMateria.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        textFieldMateria.addActionListener(new java.awt.event.ActionListener() {
+        materiaTF.setEditable(false);
+        materiaTF.setBackground(new java.awt.Color(71, 120, 197));
+        materiaTF.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        materiaTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        materiaTF.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        materiaTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldMateriaActionPerformed(evt);
+                materiaTFActionPerformed(evt);
             }
         });
 
-        textFieldPreco.setEditable(false);
-        textFieldPreco.setBackground(new java.awt.Color(71, 120, 197));
-        textFieldPreco.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        textFieldPreco.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        textFieldPreco.addActionListener(new java.awt.event.ActionListener() {
+        precoTF.setEditable(false);
+        precoTF.setBackground(new java.awt.Color(71, 120, 197));
+        precoTF.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        precoTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        precoTF.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        precoTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldPrecoActionPerformed(evt);
+                precoTFActionPerformed(evt);
             }
         });
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel18.setText("custam");
+        jLabel18.setText("custam:    R$");
 
-        jRadioButton1.setBackground(new java.awt.Color(71, 120, 197));
-        bgMateriais.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jRadioButton1.setText("Comprar agora");
+        materiaisAgora.setBackground(new java.awt.Color(71, 120, 197));
+        bgMateriais.add(materiaisAgora);
+        materiaisAgora.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        materiaisAgora.setText("Comprar agora");
 
-        jRadioButton2.setBackground(new java.awt.Color(71, 120, 197));
-        bgMateriais.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jRadioButton2.setText("Comprar depois");
+        materiaisDepois.setBackground(new java.awt.Color(71, 120, 197));
+        bgMateriais.add(materiaisDepois);
+        materiaisDepois.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        materiaisDepois.setText("Comprar depois");
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel19.setText("Na compra de qualquer curso, por mais 10 reais você ganha um brinde exclusivo");
@@ -449,17 +459,17 @@ public class PaginaLoja extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel20.setText("Deseja adicionar o brinde na compra?");
 
-        jRadioButton3.setBackground(new java.awt.Color(71, 120, 197));
-        bgBrinde.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jRadioButton3.setText("Não");
+        brindeNao.setBackground(new java.awt.Color(71, 120, 197));
+        bgBrinde.add(brindeNao);
+        brindeNao.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        brindeNao.setText("Não");
 
-        jRadioButton4.setBackground(new java.awt.Color(71, 120, 197));
-        bgBrinde.add(jRadioButton4);
-        jRadioButton4.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
-        jRadioButton4.setText("Sim");
+        brindeSim.setBackground(new java.awt.Color(71, 120, 197));
+        bgBrinde.add(brindeSim);
+        brindeSim.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        brindeSim.setText("Sim");
 
-        jButton7.setText("Finalizar compra");
+        jButton7.setText("Adicionar ao carrinho");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -485,22 +495,22 @@ public class PaginaLoja extends javax.swing.JFrame {
                         .addGap(277, 277, 277)
                         .addGroup(comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(comprarLayout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(materiaisAgora)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jRadioButton2))
+                                .addComponent(materiaisDepois))
                             .addComponent(jLabel10)))
                     .addGroup(comprarLayout.createSequentialGroup()
                         .addGap(213, 213, 213)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textFieldMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(materiaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textFieldPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(precoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel17)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(170, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, comprarLayout.createSequentialGroup()
                 .addContainerGap(155, Short.MAX_VALUE)
                 .addGroup(comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -520,9 +530,9 @@ public class PaginaLoja extends javax.swing.JFrame {
                         .addComponent(jLabel20))
                     .addGroup(comprarLayout.createSequentialGroup()
                         .addGap(333, 333, 333)
-                        .addComponent(jRadioButton4)
+                        .addComponent(brindeSim)
                         .addGap(105, 105, 105)
-                        .addComponent(jRadioButton3))
+                        .addComponent(brindeNao))
                     .addGroup(comprarLayout.createSequentialGroup()
                         .addGap(386, 386, 386)
                         .addComponent(jButton7)))
@@ -541,16 +551,16 @@ public class PaginaLoja extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addGroup(comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(textFieldMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textFieldPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(materiaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(precoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18)
                     .addComponent(jLabel17))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(materiaisAgora)
+                    .addComponent(materiaisDepois))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -559,8 +569,8 @@ public class PaginaLoja extends javax.swing.JFrame {
                 .addComponent(jLabel20)
                 .addGap(18, 18, 18)
                 .addGroup(comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jRadioButton3))
+                    .addComponent(brindeSim)
+                    .addComponent(brindeNao))
                 .addGap(30, 30, 30)
                 .addComponent(jButton7)
                 .addGap(39, 39, 39))
@@ -570,8 +580,8 @@ public class PaginaLoja extends javax.swing.JFrame {
 
         carrinho.setBackground(new java.awt.Color(71, 120, 197));
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableCarrinho.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        tableCarrinho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -594,9 +604,14 @@ public class PaginaLoja extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setToolTipText("");
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane1.setViewportView(jTable1);
+        tableCarrinho.setToolTipText("");
+        tableCarrinho.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tableCarrinho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableCarrinhoMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tableCarrinho);
 
         jButton3.setText("Alterar produto");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -606,15 +621,25 @@ public class PaginaLoja extends javax.swing.JFrame {
         });
 
         jButton4.setText("Adicionar produto");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Excluir produto");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel8.setText("Preço total: ");
 
-        jTextField1.setBackground(new java.awt.Color(71, 120, 197));
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        TFpreco.setBackground(new java.awt.Color(71, 120, 197));
+        TFpreco.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        TFpreco.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jButton6.setText("Finalizar a compra");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -641,7 +666,7 @@ public class PaginaLoja extends javax.swing.JFrame {
                         .addGap(108, 108, 108)
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TFpreco, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton6)))
                 .addContainerGap(193, Short.MAX_VALUE))
@@ -659,7 +684,7 @@ public class PaginaLoja extends javax.swing.JFrame {
                 .addGap(53, 53, 53)
                 .addGroup(carrinhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TFpreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton6))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
@@ -761,12 +786,22 @@ public class PaginaLoja extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(rootPane, "O carrinho está vazio, por favor realize a compra de algum curso");
         }else{
+        double precoTotal = 0;
         cardLayout.show(layout, "carrinho");
         setColor(button_carrinho);
         resetColor(button_comprar);
         resetColor(button_home);
         resetColor(button_sobre);
         resetColor(button_alunos);
+        try {
+            for(int i = 0; i < cursosCadastrados.size(); i++)
+            {
+                precoTotal = precoTotal + cursosCadastrados.get(i).getPreco();
+            }
+            
+            TFpreco.setText(Double.toString(precoTotal));
+        } catch (Exception e) {
+        }
         }
 
     }//GEN-LAST:event_button_carrinhoMousePressed
@@ -781,33 +816,68 @@ public class PaginaLoja extends javax.swing.JFrame {
         resetColor(button_alunos);
     }//GEN-LAST:event_button_sobreMousePressed
 
-    private void textFieldMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldMateriaActionPerformed
+    private void materiaTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materiaTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldMateriaActionPerformed
+    }//GEN-LAST:event_materiaTFActionPerformed
 
-    private void textFieldPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldPrecoActionPerformed
+    private void precoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precoTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldPrecoActionPerformed
+    }//GEN-LAST:event_precoTFActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void clearField()
+    {
+        materiaTF.setText("");
+        precoTF.setText("");
+        bgMateriais.clearSelection();
+        bgBrinde.clearSelection();
+    }
+    
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        if(selectIdiom != true)
-        {
-            JOptionPane.showMessageDialog(rootPane, "Por favor, selecione uma matéria");
-        }else if(bgMateriais.isSelected(jRadioButton1.getModel()) == false && bgMateriais.isSelected(jRadioButton2.getModel()) == false)
+
+        if(bgMateriais.isSelected(materiaisAgora.getModel()) == false && bgMateriais.isSelected(materiaisDepois.getModel()) == false)
         {
             JOptionPane.showMessageDialog(rootPane, "Por favor, selecione uma opção sobre o materal");
-        }else if(bgBrinde.isSelected(jRadioButton3.getModel()) == false && bgBrinde.isSelected(jRadioButton4.getModel()) == false)
+        }else if(bgBrinde.isSelected(brindeNao.getModel()) == false && bgBrinde.isSelected(brindeSim.getModel()) == false)
         {
             JOptionPane.showMessageDialog(rootPane, "Por favor, selecione uma opção sobre o brinde");
         }else
         {
-            JOptionPane.showMessageDialog(rootPane, "Item adicionado ao carrinho!");
+            try {
+            double preco = Double.parseDouble(precoTF.getText());
+            String idioma = (String)comboBoxMateria.getSelectedItem();
+            boolean material, brinde;
+            if(materiaisAgora.isSelected())
+            {
+                material = true;
+            }else
+            {
+                material = false;
+            }
+            if(brindeSim.isSelected())
+            {
+                brinde = true;
+            }else
+            {
+                brinde = false; 
+            }
+            cursosCadastrados.add(new curso(idioma, preco, brinde, material));
+            tabelaCarrinho.setRowCount(0);
+            for(int i = 0; i < cursosCadastrados.size(); i++)
+            {
+                Object[] objs = {cursosCadastrados.get(i).getIdioma(), cursosCadastrados.get(i).isMaterial(), cursosCadastrados.get(i).isBrinde(),
+                cursosCadastrados.get(i).getPreco()};
+                tabelaCarrinho.addRow(objs);
+            }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Selecione uma materia, por favor");
+            }
             numItens++;
+            clearField();
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
@@ -815,7 +885,23 @@ public class PaginaLoja extends javax.swing.JFrame {
         // TODO add your handling code here:    
         selectIdiom = true;
         materia = (String)comboBoxMateria.getSelectedItem();
-        textFieldMateria.setText(materia);
+        materiaTF.setText(materia);
+        if(materia == "Inglês")
+        {
+            precoTF.setText("530");
+        }else if(materia == "Francês")
+        {
+            precoTF.setText("420");
+        }else if(materia == "Japonês")
+        {
+            precoTF.setText("480");
+        }else if(materia == "Espanhol")
+        {
+            precoTF.setText("350");
+        }else
+        {
+            precoTF.setText("450");
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void button_alunosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_alunosMousePressed
@@ -841,6 +927,40 @@ public class PaginaLoja extends javax.swing.JFrame {
         // TODO add your handling code here:
         checkout1.main(null);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        cardLayout.show(layout, "comprar");
+        setColor(button_comprar);
+        resetColor(button_home);
+        resetColor(button_carrinho);
+        resetColor(button_sobre);
+        resetColor(button_alunos);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int dialogResult = JOptionPane.showConfirmDialog(this, "Excluir essa materia", "Delete", dialogButton);
+        if(dialogResult == 0)
+        {
+            tabelaCarrinho.removeRow(row);
+            cursosCadastrados.remove(row);
+            tabelaCarrinho.setRowCount(0);
+            for(int i = 0; i < cursosCadastrados.size(); i++)
+            {
+                Object[] objs = {cursosCadastrados.get(i).getIdioma(), cursosCadastrados.get(i).isMaterial(), cursosCadastrados.get(i).isBrinde(),
+                cursosCadastrados.get(i).getPreco()};
+                tabelaCarrinho.addRow(objs);
+            }
+            
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void tableCarrinhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCarrinhoMouseClicked
+        // TODO add your handling code here:
+        row = tableCarrinho.getSelectedRow();
+    }//GEN-LAST:event_tableCarrinhoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -888,9 +1008,12 @@ public class PaginaLoja extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TFpreco;
     private javax.swing.JPanel alunos;
     private javax.swing.ButtonGroup bgBrinde;
     private javax.swing.ButtonGroup bgMateriais;
+    private javax.swing.JRadioButton brindeNao;
+    private javax.swing.JRadioButton brindeSim;
     private javax.swing.JPanel button_alunos;
     private javax.swing.JPanel button_carrinho;
     private javax.swing.JPanel button_comprar;
@@ -929,21 +1052,18 @@ public class PaginaLoja extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel layout;
+    private javax.swing.JTextField materiaTF;
+    private javax.swing.JRadioButton materiaisAgora;
+    private javax.swing.JRadioButton materiaisDepois;
+    private javax.swing.JTextField precoTF;
     private javax.swing.JPanel sobre;
-    private javax.swing.JTextField textFieldMateria;
-    private javax.swing.JTextField textFieldPreco;
+    private javax.swing.JTable tableCarrinho;
     // End of variables declaration//GEN-END:variables
 }

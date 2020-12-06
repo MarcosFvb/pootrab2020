@@ -590,9 +590,9 @@
                                   <EmptySpace min="-2" pref="277" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="materiaisAgora" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="materiaisDepois" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -601,16 +601,16 @@
                                   <EmptySpace min="-2" pref="213" max="-2" attributes="0"/>
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="textFieldMateria" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="materiaTF" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                   <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="textFieldPreco" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <Component id="precoTF" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="170" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace pref="155" max="32767" attributes="0"/>
@@ -635,9 +635,9 @@
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="333" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="brindeSim" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="brindeNao" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="386" max="-2" attributes="0"/>
@@ -662,8 +662,8 @@
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="textFieldMateria" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="textFieldPreco" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="materiaTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="precoTF" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -671,8 +671,8 @@
                           <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="20" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jRadioButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jRadioButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="materiaisAgora" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="materiaisDepois" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
@@ -682,8 +682,8 @@
                           <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jRadioButton4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jRadioButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="brindeSim" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="brindeNao" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="jButton7" min="-2" max="-2" attributes="0"/>
@@ -745,7 +745,7 @@
                     <Property name="text" type="java.lang.String" value="reais"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="textFieldMateria">
+                <Component class="javax.swing.JTextField" name="materiaTF">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -762,10 +762,10 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldMateriaActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="materiaTFActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="textFieldPreco">
+                <Component class="javax.swing.JTextField" name="precoTF">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -774,6 +774,7 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="15" style="0"/>
                     </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
                         <BevelBorder/>
@@ -781,7 +782,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldPrecoActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="precoTFActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel18">
@@ -789,10 +790,10 @@
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="15" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="custam"/>
+                    <Property name="text" type="java.lang.String" value="custam:    R$"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+                <Component class="javax.swing.JRadioButton" name="materiaisAgora">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="c5" green="78" red="47" type="rgb"/>
@@ -806,7 +807,7 @@
                     <Property name="text" type="java.lang.String" value="Comprar agora"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+                <Component class="javax.swing.JRadioButton" name="materiaisDepois">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="c5" green="78" red="47" type="rgb"/>
@@ -836,7 +837,7 @@
                     <Property name="text" type="java.lang.String" value="Deseja adicionar o brinde na compra?"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="jRadioButton3">
+                <Component class="javax.swing.JRadioButton" name="brindeNao">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="c5" green="78" red="47" type="rgb"/>
@@ -850,7 +851,7 @@
                     <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JRadioButton" name="jRadioButton4">
+                <Component class="javax.swing.JRadioButton" name="brindeSim">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="c5" green="78" red="47" type="rgb"/>
@@ -866,7 +867,7 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton7">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Finalizar compra"/>
+                    <Property name="text" type="java.lang.String" value="Adicionar ao carrinho"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton7ActionPerformed"/>
@@ -912,7 +913,7 @@
                                   <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextField1" min="-2" pref="133" max="-2" attributes="0"/>
+                                  <Component id="TFpreco" min="-2" pref="133" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -935,7 +936,7 @@
                           <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TFpreco" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="92" max="32767" attributes="0"/>
@@ -951,7 +952,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JTable" name="jTable1">
+                    <Component class="javax.swing.JTable" name="tableCarrinho">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="15" style="0"/>
@@ -965,6 +966,30 @@
                           </Table>
                         </Property>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="0">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
                         <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
                           <JTableSelectionModel selectionMode="0"/>
                         </Property>
@@ -972,6 +997,9 @@
                           <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableCarrinhoMouseClicked"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -987,11 +1015,17 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Adicionar produto"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jButton5">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Excluir produto"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel8">
                   <Properties>
@@ -1001,7 +1035,7 @@
                     <Property name="text" type="java.lang.String" value="Pre&#xe7;o total: "/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="jTextField1">
+                <Component class="javax.swing.JTextField" name="TFpreco">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="c5" green="78" red="47" type="rgb"/>
