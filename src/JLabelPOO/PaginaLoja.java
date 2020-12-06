@@ -10,9 +10,10 @@ import java.awt.Color;
 import javax.swing.ButtonModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import JLabelPOO.checkout1;
+import JLabelPOO.checkout;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import main.aluno;
 import main.curso;
 
 /**
@@ -25,20 +26,29 @@ public class PaginaLoja extends javax.swing.JFrame {
     /**
      * Creates new form PaginaLoja
      */
+    double precoTotal = 0;
     public int numAlunos = 0;
     CardLayout cardLayout;
     public boolean selectIdiom;
-    public String materia;
+    public String materia, nomeAluno, emailAluno;
     public int numItens, row;
+    ArrayList<String> apenasMaterias;
     ArrayList <curso> cursosCadastrados;
+    ArrayList <aluno> alunosCadastrados;
     DefaultTableModel tabelaCarrinho;
+    DefaultTableModel tabelaCadastro;
     String header[] = new String[]{"Idioma", "Material", "Brinde", "Preço"};
+    String headerCadastro[] = new String[]{"Nome", "Email"};
     public PaginaLoja() {
         initComponents();
         cardLayout = (CardLayout)(layout.getLayout());
+        apenasMaterias = new ArrayList<>();
+        alunosCadastrados = new ArrayList<>();
         cursosCadastrados = new ArrayList<>();
+        tabelaCadastro = new DefaultTableModel(headerCadastro, 0);
         tabelaCarrinho = new DefaultTableModel(header, 0);
         tableCarrinho.setModel(tabelaCarrinho);
+        tableCadastro.setModel(tabelaCadastro);
     }
 
     /**
@@ -52,6 +62,7 @@ public class PaginaLoja extends javax.swing.JFrame {
 
         bgMateriais = new javax.swing.ButtonGroup();
         bgBrinde = new javax.swing.ButtonGroup();
+        jProgressBar1 = new javax.swing.JProgressBar();
         jSplitPane1 = new javax.swing.JSplitPane();
         jPanel1 = new javax.swing.JPanel();
         button_home = new javax.swing.JPanel();
@@ -94,6 +105,8 @@ public class PaginaLoja extends javax.swing.JFrame {
         brindeSim = new javax.swing.JRadioButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jLabel24 = new javax.swing.JLabel();
+        materialPrecoTF = new javax.swing.JTextField();
         carrinho = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableCarrinho = new javax.swing.JTable();
@@ -103,10 +116,13 @@ public class PaginaLoja extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         TFpreco = new javax.swing.JTextField();
         jButton6 = new javax.swing.JButton();
-        sobre = new javax.swing.JPanel();
         alunos = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tableCadastro = new javax.swing.JTable();
+        jLabel23 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        sobre = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -410,7 +426,7 @@ public class PaginaLoja extends javax.swing.JFrame {
         comboBoxMateria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inglês", "Francês", "Japonês", "Espanhol", "Alemão" }));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel9.setText("Os materiais do curso de");
+        jLabel9.setText("O curso de ");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel10.setText("Deseja comprar os materiais agora ou depois?");
@@ -441,7 +457,7 @@ public class PaginaLoja extends javax.swing.JFrame {
         });
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        jLabel18.setText("custam:    R$");
+        jLabel18.setText("custa:      R$");
 
         materiaisAgora.setBackground(new java.awt.Color(71, 120, 197));
         bgMateriais.add(materiaisAgora);
@@ -483,34 +499,26 @@ public class PaginaLoja extends javax.swing.JFrame {
             }
         });
 
+        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel24.setText("E os materias custam");
+
+        materialPrecoTF.setEditable(false);
+        materialPrecoTF.setBackground(new java.awt.Color(71, 120, 197));
+        materialPrecoTF.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        materialPrecoTF.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        materialPrecoTF.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        materialPrecoTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                materialPrecoTFActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout comprarLayout = new javax.swing.GroupLayout(comprar);
         comprar.setLayout(comprarLayout);
         comprarLayout.setHorizontalGroup(
             comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(comprarLayout.createSequentialGroup()
-                .addGroup(comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(comprarLayout.createSequentialGroup()
-                        .addGap(277, 277, 277)
-                        .addGroup(comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(comprarLayout.createSequentialGroup()
-                                .addComponent(materiaisAgora)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(materiaisDepois))
-                            .addComponent(jLabel10)))
-                    .addGroup(comprarLayout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(materiaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(precoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel17)))
-                .addContainerGap(170, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, comprarLayout.createSequentialGroup()
                 .addContainerGap(155, Short.MAX_VALUE)
                 .addGroup(comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -537,6 +545,33 @@ public class PaginaLoja extends javax.swing.JFrame {
                         .addGap(386, 386, 386)
                         .addComponent(jButton7)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(comprarLayout.createSequentialGroup()
+                .addGroup(comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(comprarLayout.createSequentialGroup()
+                        .addGap(277, 277, 277)
+                        .addGroup(comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(comprarLayout.createSequentialGroup()
+                                .addComponent(materiaisAgora)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(materiaisDepois))
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(comprarLayout.createSequentialGroup()
+                        .addGap(229, 229, 229)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(materiaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(precoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel17))
+                    .addGroup(comprarLayout.createSequentialGroup()
+                        .addGap(301, 301, 301)
+                        .addComponent(jLabel24)
+                        .addGap(18, 18, 18)
+                        .addComponent(materialPrecoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         comprarLayout.setVerticalGroup(
             comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -548,7 +583,7 @@ public class PaginaLoja extends javax.swing.JFrame {
                     .addComponent(jButton8))
                 .addGap(40, 40, 40)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(18, 18, 18)
                 .addGroup(comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(materiaTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -556,8 +591,12 @@ public class PaginaLoja extends javax.swing.JFrame {
                     .addComponent(jLabel18)
                     .addComponent(jLabel17))
                 .addGap(18, 18, 18)
+                .addGroup(comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(materialPrecoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(comprarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(materiaisAgora)
                     .addComponent(materiaisDepois))
@@ -691,6 +730,69 @@ public class PaginaLoja extends javax.swing.JFrame {
 
         layout.add(carrinho, "carrinho");
 
+        alunos.setBackground(new java.awt.Color(71, 120, 197));
+
+        tableCadastro.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Email"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tableCadastro);
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        jLabel23.setText("Alunos cadastrados no curso de ");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Inglês", "Francês", "Japonês", "Espanhol", "Alemão" }));
+
+        jButton1.setText("pesquisar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout alunosLayout = new javax.swing.GroupLayout(alunos);
+        alunos.setLayout(alunosLayout);
+        alunosLayout.setHorizontalGroup(
+            alunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, alunosLayout.createSequentialGroup()
+                .addContainerGap(175, Short.MAX_VALUE)
+                .addGroup(alunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, alunosLayout.createSequentialGroup()
+                        .addComponent(jLabel23)
+                        .addGap(46, 46, 46)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(jButton1)))
+                .addGap(188, 188, 188))
+        );
+        alunosLayout.setVerticalGroup(
+            alunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, alunosLayout.createSequentialGroup()
+                .addContainerGap(170, Short.MAX_VALUE)
+                .addGroup(alunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(63, 63, 63)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87))
+        );
+
+        layout.add(alunos, "alunos");
+
         sobre.setBackground(new java.awt.Color(71, 120, 197));
 
         javax.swing.GroupLayout sobreLayout = new javax.swing.GroupLayout(sobre);
@@ -705,37 +807,6 @@ public class PaginaLoja extends javax.swing.JFrame {
         );
 
         layout.add(sobre, "sobre");
-
-        alunos.setBackground(new java.awt.Color(71, 120, 197));
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nome", "Email", "Curso"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        javax.swing.GroupLayout alunosLayout = new javax.swing.GroupLayout(alunos);
-        alunos.setLayout(alunosLayout);
-        alunosLayout.setHorizontalGroup(
-            alunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(alunosLayout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(107, Short.MAX_VALUE))
-        );
-        alunosLayout.setVerticalGroup(
-            alunosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, alunosLayout.createSequentialGroup()
-                .addContainerGap(208, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(197, 197, 197))
-        );
-
-        layout.add(alunos, "alunos");
 
         jSplitPane1.setRightComponent(layout);
 
@@ -786,26 +857,27 @@ public class PaginaLoja extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(rootPane, "O carrinho está vazio, por favor realize a compra de algum curso");
         }else{
-        double precoTotal = 0;
         cardLayout.show(layout, "carrinho");
         setColor(button_carrinho);
         resetColor(button_comprar);
         resetColor(button_home);
         resetColor(button_sobre);
         resetColor(button_alunos);
-        try {
-            for(int i = 0; i < cursosCadastrados.size(); i++)
+        atualizarPrecoTotal();
+        }
+    }//GEN-LAST:event_button_carrinhoMousePressed
+
+    private void atualizarPrecoTotal()
+    {
+        precoTotal = 0;
+        for(int i = 0; i < cursosCadastrados.size(); i++)
             {
                 precoTotal = precoTotal + cursosCadastrados.get(i).getPreco();
             }
             
             TFpreco.setText(Double.toString(precoTotal));
-        } catch (Exception e) {
-        }
-        }
-
-    }//GEN-LAST:event_button_carrinhoMousePressed
-
+    }
+    
     private void button_sobreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_sobreMousePressed
         // TODO add your handling code here:
         cardLayout.show(layout, "sobre");
@@ -830,6 +902,7 @@ public class PaginaLoja extends javax.swing.JFrame {
 
     private void clearField()
     {
+        materialPrecoTF.setText("");
         materiaTF.setText("");
         precoTF.setText("");
         bgMateriais.clearSelection();
@@ -865,6 +938,14 @@ public class PaginaLoja extends javax.swing.JFrame {
             {
                 brinde = false; 
             }
+            if (material == true)
+            {
+                preco = Double.parseDouble(materialPrecoTF.getText()) + preco;
+            }
+            if (brinde == true)
+            {
+                preco = preco + 10;
+            }
             cursosCadastrados.add(new curso(idioma, preco, brinde, material));
             tabelaCarrinho.setRowCount(0);
             for(int i = 0; i < cursosCadastrados.size(); i++)
@@ -877,6 +958,7 @@ public class PaginaLoja extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Selecione uma materia, por favor");
             }
             numItens++;
+            JOptionPane.showMessageDialog(rootPane, "Curso adicionado ao carrinho");
             clearField();
         }
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -886,6 +968,7 @@ public class PaginaLoja extends javax.swing.JFrame {
         selectIdiom = true;
         materia = (String)comboBoxMateria.getSelectedItem();
         materiaTF.setText(materia);
+        materialPrecoTF.setText("500");
         if(materia == "Inglês")
         {
             precoTF.setText("530");
@@ -907,7 +990,7 @@ public class PaginaLoja extends javax.swing.JFrame {
     private void button_alunosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_alunosMousePressed
         // TODO add your handling code here:
         
-        this.numAlunos = checkout1.numAlunos;
+        this.numAlunos = checkout.numAlunos;
         
         if(this.numAlunos == 0)
         {
@@ -922,10 +1005,30 @@ public class PaginaLoja extends javax.swing.JFrame {
             resetColor(button_home);
         }
     }//GEN-LAST:event_button_alunosMousePressed
-
+    
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        checkout1.main(null);
+        checkout.main(null);
+        cardLayout.show(layout, "home");
+        setColor(button_home);
+        resetColor(button_comprar);
+        resetColor(button_carrinho);
+        resetColor(button_sobre);
+        resetColor(button_alunos);
+        for (int i = 0; i < cursosCadastrados.size(); i++)
+        {
+            apenasMaterias.add(cursosCadastrados.get(i).getIdioma());
+        }
+        alunosCadastrados.add(new aluno(nomeAluno, emailAluno, apenasMaterias));
+            tabelaCadastro.setRowCount(0);
+            for(int i = 0; i < alunosCadastrados.size(); i++)
+            {
+                Object[] objs = {alunosCadastrados.get(i).getNome(), alunosCadastrados.get(i).getEmail()};
+                tabelaCarrinho.addRow(objs);
+            }
+            JOptionPane.showMessageDialog(rootPane, apenasMaterias);
+        cursosCadastrados.clear();
+        tabelaCarrinho.setRowCount(0);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -953,7 +1056,7 @@ public class PaginaLoja extends javax.swing.JFrame {
                 cursosCadastrados.get(i).getPreco()};
                 tabelaCarrinho.addRow(objs);
             }
-            
+            atualizarPrecoTotal();
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -961,6 +1064,15 @@ public class PaginaLoja extends javax.swing.JFrame {
         // TODO add your handling code here:
         row = tableCarrinho.getSelectedRow();
     }//GEN-LAST:event_tableCarrinhoMouseClicked
+
+    private void materialPrecoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialPrecoTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_materialPrecoTFActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1023,12 +1135,14 @@ public class PaginaLoja extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBoxMateria;
     private javax.swing.JPanel comprar;
     private javax.swing.JPanel home;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1044,6 +1158,8 @@ public class PaginaLoja extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1052,18 +1168,20 @@ public class PaginaLoja extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JPanel layout;
     private javax.swing.JTextField materiaTF;
     private javax.swing.JRadioButton materiaisAgora;
     private javax.swing.JRadioButton materiaisDepois;
+    private javax.swing.JTextField materialPrecoTF;
     private javax.swing.JTextField precoTF;
     private javax.swing.JPanel sobre;
+    private javax.swing.JTable tableCadastro;
     private javax.swing.JTable tableCarrinho;
     // End of variables declaration//GEN-END:variables
 }

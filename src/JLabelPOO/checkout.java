@@ -6,15 +6,30 @@
 package JLabelPOO;
 
 import javax.swing.JOptionPane;
+import JLabelPOO.PaginaLoja;
 
 import java.awt.Window;
-public class checkout1 extends java.awt.Dialog {
+import java.util.ArrayList;
+import main.aluno;
+public class checkout extends java.awt.Dialog {
 
     /**
      * Creates new form checkout1
      */
     static int numAlunos = 0;
-    public checkout1(java.awt.Frame parent, boolean modal) {
+    public static String nome, email;
+    
+    public static String getNome()
+    {
+        return nome;
+    }
+    
+    public static String getEmail()
+    {
+        return email;
+    }
+    
+    public checkout(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -27,10 +42,8 @@ public class checkout1 extends java.awt.Dialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        nome = new javax.swing.JLabel();
         senha = new javax.swing.JLabel();
         senha2 = new javax.swing.JLabel();
-        email = new javax.swing.JLabel();
         numero = new javax.swing.JLabel();
         data = new javax.swing.JLabel();
         codigo = new javax.swing.JLabel();
@@ -42,6 +55,8 @@ public class checkout1 extends java.awt.Dialog {
         dataTF = new javax.swing.JTextField();
         codigoTF = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
+        emailJL2 = new javax.swing.JLabel();
+        nomeJL1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(71, 120, 197));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -50,10 +65,6 @@ public class checkout1 extends java.awt.Dialog {
             }
         });
 
-        nome.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        nome.setForeground(new java.awt.Color(255, 255, 255));
-        nome.setText("Nome: ");
-
         senha.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         senha.setForeground(new java.awt.Color(255, 255, 255));
         senha.setText("Senha: ");
@@ -61,10 +72,6 @@ public class checkout1 extends java.awt.Dialog {
         senha2.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         senha2.setForeground(new java.awt.Color(255, 255, 255));
         senha2.setText("Repita sua senha: ");
-
-        email.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
-        email.setForeground(new java.awt.Color(255, 255, 255));
-        email.setText("Email: ");
 
         numero.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         numero.setForeground(new java.awt.Color(255, 255, 255));
@@ -117,6 +124,14 @@ public class checkout1 extends java.awt.Dialog {
             }
         });
 
+        emailJL2.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        emailJL2.setForeground(new java.awt.Color(255, 255, 255));
+        emailJL2.setText("Email: ");
+
+        nomeJL1.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        nomeJL1.setForeground(new java.awt.Color(255, 255, 255));
+        nomeJL1.setText("Nome: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,48 +140,44 @@ public class checkout1 extends java.awt.Dialog {
                 .addContainerGap(93, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(nomeJL1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nome)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nomeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(senhaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(email)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(senha2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(senha2TF, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(data)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(dataTF))
-                                    .addComponent(numero))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(numeroTF, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(codigo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jToggleButton1)
-                                    .addComponent(codigoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(62, 62, 62))
+                            .addComponent(senhaTF, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nomeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(senha)
-                        .addGap(44, 44, 44))))
+                        .addComponent(emailJL2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(senha2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(senha2TF, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(data)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(dataTF))
+                            .addComponent(numero))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(numeroTF, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(codigo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jToggleButton1)
+                            .addComponent(codigoTF, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(senha))
+                .addGap(62, 62, 62))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nomeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nomeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeJL1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -175,11 +186,11 @@ public class checkout1 extends java.awt.Dialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(senha2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(senha2TF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                    .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailJL2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(numeroTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -191,7 +202,7 @@ public class checkout1 extends java.awt.Dialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(codigoTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jToggleButton1)
                 .addGap(32, 32, 32))
         );
@@ -223,7 +234,7 @@ public class checkout1 extends java.awt.Dialog {
             dataTF.setText("MM/AA");
         }
     }//GEN-LAST:event_dataTFFocusLost
-
+  
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
         if(nomeTF.getText().equals("") || senhaTF.getText().equals("") || senha2TF.getText().equals("") || emailTF.getText().equals("") || numeroTF.getText().equals("")
@@ -232,6 +243,8 @@ public class checkout1 extends java.awt.Dialog {
             JOptionPane.showMessageDialog(null, "preencha todos os campos por favor");
         }else
         {
+            nome = this.nomeTF.getText();
+            email = this.emailTF.getText();
             numAlunos = 1 + numAlunos;
             this.dispose();
         }
@@ -243,7 +256,7 @@ public class checkout1 extends java.awt.Dialog {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                checkout1 dialog = new checkout1(new java.awt.Frame(), true);
+                checkout dialog = new checkout(new java.awt.Frame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     public void windowClosing(java.awt.event.WindowEvent e) {
                         this.dispose();
@@ -264,10 +277,10 @@ public class checkout1 extends java.awt.Dialog {
     private javax.swing.JTextField codigoTF;
     private javax.swing.JLabel data;
     private javax.swing.JTextField dataTF;
-    private javax.swing.JLabel email;
+    private javax.swing.JLabel emailJL2;
     private javax.swing.JTextField emailTF;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JLabel nome;
+    private javax.swing.JLabel nomeJL1;
     private javax.swing.JTextField nomeTF;
     private javax.swing.JLabel numero;
     private javax.swing.JTextField numeroTF;
