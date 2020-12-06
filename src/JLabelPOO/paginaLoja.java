@@ -1076,6 +1076,7 @@ public class paginaLoja extends javax.swing.JFrame {
         resetColor(button_carrinho);
         resetColor(button_sobre);
         resetColor(button_alunos);
+        apenasMaterias.clear();
         for (int i = 0; i < cursosCadastrados.size(); i++)
         {
             apenasMaterias.add(cursosCadastrados.get(i).getIdioma());
@@ -1143,7 +1144,8 @@ public class paginaLoja extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(alunosCheck)
             {
-                alunosCadastrados.add(new aluno(checkout.nome, checkout.email, apenasMaterias));
+                ArrayList<String> copia = new ArrayList<>(apenasMaterias);
+                alunosCadastrados.add(new aluno(checkout.nome, checkout.email, copia));
                 alunosCheck = false;
         }else{
                 
