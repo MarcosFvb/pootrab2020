@@ -6,7 +6,7 @@
 package JLabelPOO;
 
 import javax.swing.JOptionPane;
-import JLabelPOO.PaginaLoja;
+import JLabelPOO.paginaLoja;
 
 import java.awt.Window;
 import java.util.ArrayList;
@@ -236,7 +236,7 @@ public class checkout extends java.awt.Dialog {
             nome = this.nomeTF.getText();
             email = this.emailTF.getText();
             numAlunos = 1 + numAlunos;
-            PaginaLoja.alunosCheck = true;
+            paginaLoja.alunosCheck = true;
             this.dispose();
         }
     }//GEN-LAST:event_bTFinalizarCompraActionPerformed
