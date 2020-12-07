@@ -111,7 +111,6 @@ public class paginaLoja extends javax.swing.JFrame {
         carrinho = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableCarrinho = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -400,11 +399,10 @@ public class paginaLoja extends javax.swing.JFrame {
         homeLayout.setHorizontalGroup(
             homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(homeLayout.createSequentialGroup()
+                .addGap(123, 123, 123)
                 .addGroup(homeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
-                    .addGroup(homeLayout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(jLabel5)))
+                    .addComponent(jLabel5))
                 .addContainerGap(162, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, homeLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -666,13 +664,6 @@ public class paginaLoja extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tableCarrinho);
 
-        jButton3.setText("Alterar produto");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
         jButton4.setText("Adicionar produto");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -707,12 +698,11 @@ public class paginaLoja extends javax.swing.JFrame {
             carrinhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(carrinhoLayout.createSequentialGroup()
                 .addGap(179, 179, 179)
-                .addGroup(carrinhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(carrinhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(carrinhoLayout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(101, 101, 101)
+                        .addGap(131, 131, 131)
                         .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(57, 57, 57)
                         .addComponent(jButton5))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(carrinhoLayout.createSequentialGroup()
@@ -731,7 +721,6 @@ public class paginaLoja extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addGroup(carrinhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
                     .addComponent(jButton4)
                     .addComponent(jButton5))
                 .addGap(53, 53, 53)
@@ -955,10 +944,6 @@ public class paginaLoja extends javax.swing.JFrame {
     private void precoTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precoTFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_precoTFActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void clearField()
     {
@@ -1216,7 +1201,6 @@ public class paginaLoja extends javax.swing.JFrame {
     private javax.swing.JPanel comprar;
     private javax.swing.JPanel home;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
